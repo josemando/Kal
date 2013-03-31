@@ -30,12 +30,12 @@ static const CGFloat kMonthLabelHeight = 17.f;
     self.autoresizesSubviews = YES;
     self.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
-    UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, frame.size.width, kHeaderHeight)] autorelease];
+    UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, kHeaderHeight)] autorelease];
     headerView.backgroundColor = [UIColor grayColor];
     [self addSubviewsToHeaderView:headerView];
     [self addSubview:headerView];
     
-    UIView *contentView = [[[UIView alloc] initWithFrame:CGRectMake(0.f, kHeaderHeight, frame.size.width, frame.size.height - kHeaderHeight)] autorelease];
+    UIView *contentView = [[[UIView alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y + kHeaderHeight, frame.size.width, frame.size.height - kHeaderHeight)] autorelease];
     contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [self addSubviewsToContentView:contentView];
     [self addSubview:contentView];
@@ -161,7 +161,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
   // The list of events for the selected day
   tableView = [[UITableView alloc] initWithFrame:fullWidthAutomaticLayoutFrame style:UITableViewStylePlain];
   tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-  [contentView addSubview:tableView];
+//  [contentView addSubview:tableView];
   
   // Drop shadow below tile grid and over the list of events for the selected day
   shadowView = [[UIImageView alloc] initWithFrame:fullWidthAutomaticLayoutFrame];

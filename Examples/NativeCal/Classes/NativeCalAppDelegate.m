@@ -6,6 +6,7 @@
 #import "NativeCalAppDelegate.h"
 #import "EventKitDataSource.h"
 #import "Kal.h"
+#import "SplitViewController.h"
 
 #import <EventKit/EventKit.h>
 #import <EventKitUI/EventKitUI.h>
@@ -34,10 +35,23 @@
   kal.delegate = self;
   dataSource = [[EventKitDataSource alloc] init];
   kal.dataSource = dataSource;
-  
-  // Setup the navigation stack and display it.
-  navController = [[UINavigationController alloc] initWithRootViewController:kal];
-  [window addSubview:navController.view];
+
+  if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    SplitViewController *splitController = [[SplitViewController alloc] init];
+
+    UIViewController *detail = [[UIViewController alloc] init];
+    [[detail view] setBackgroundColor:[UIColor whiteColor]];
+
+    splitController.viewControllers = @[kal, detail];
+
+    [window addSubview:splitController.view];
+  } else {
+    // Setup the navigation stack and display it.
+    navController = [[UINavigationController alloc] initWithRootViewController:kal];
+
+    [window addSubview:navController.view];
+  }
+
   [window makeKeyAndVisible];
 }
 
