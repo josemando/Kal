@@ -46,7 +46,6 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   if (self = [super initWithFrame:frame]) {
     self.clipsToBounds = YES;
     logic = [theLogic retain];
-    delegate = theDelegate;
     
     CGRect monthRect = CGRectMake(0.f, 0.f, frame.size.width, frame.size.height);
     frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
@@ -56,6 +55,9 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     [self addSubview:frontMonthView];
 
     [self jumpToSelectedMonth];
+
+    // delegate is the last to be set to avoid callback on init
+    delegate = theDelegate;
   }
   return self;
 }
