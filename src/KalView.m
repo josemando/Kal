@@ -58,13 +58,13 @@ static const CGFloat kMonthLabelHeight = 17.f;
 - (void)showPreviousMonth
 {
   if (!gridView.transitioning)
-    [delegate showPreviousMonth];
+    [delegate showStartPreviousMonth];
 }
 
 - (void)showFollowingMonth
 {
   if (!gridView.transitioning)
-    [delegate showFollowingMonth];
+    [delegate showStartFollowingMonth];
 }
 
 - (void)addSubviewsToHeaderView:(UIView *)headerView

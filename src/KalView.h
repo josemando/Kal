@@ -75,4 +75,11 @@
 - (void)showFollowingMonth;
 - (void)didSelectDate:(KalDate *)date;
 
+@optional
+
+- (void)showPreviousMonth:(NSDate *)date;
+- (void)showFollowingMonth:(NSDate *)date;
+- (void)showStartPreviousMonth;
+- (void)showStartFollowingMonth;
+
 @end
